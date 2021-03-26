@@ -1,4 +1,134 @@
-const { HttpMethod } = require("./HttpMethod");
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>index.js - Documentation</title>
+
+		<meta property="og:title" content="" />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="" />
+
+		<meta property="og:url" content="" />
+
+		<script src="scripts/prettify/prettify.js"></script>
+		<script src="scripts/prettify/lang-css.js"></script>
+		<!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link type="text/css" rel="stylesheet" href="styles/prettify.css" />
+		<link type="text/css" rel="stylesheet" href="styles/jsdoc.css" />
+		<script src="scripts/nav.js" defer></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	</head>
+	<body>
+		<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+		<label for="nav-trigger" class="navicon-button x">
+			<div class="navicon"></div>
+		</label>
+
+		<label for="nav-trigger" class="overlay"></label>
+
+		<nav class="wrap">
+			<input type="text" id="nav-search" placeholder="Search" />
+
+			<h2><a href="index.html">Home</a></h2>
+			<h2>
+				<a
+					href="https://github.com/bombitmanbomb/utils"
+					target="_blank"
+					class="menu-item"
+					id="website_link"
+					>Project Website</a
+				>
+			</h2>
+			<h2>
+				<a
+					href="https://github.com/bombitmanbomb/utils/discussions"
+					target="_blank"
+					class="menu-item"
+					id="forum_link"
+					>Discussions</a
+				>
+			</h2>
+			<h2>
+				<a
+					href="https://discord.gg/6y2A4Pk"
+					target="_blank"
+					class="menu-item"
+					id="discord_link"
+					>Discord</a
+				>
+			</h2>
+			<h3>Classes</h3>
+			<ul>
+				<li>
+					<a href="CancellationTokenSource.html">CancellationTokenSource</a>
+				</li>
+				<li>
+					<a href="CloudResult.html">CloudResult</a>
+					<ul class="methods">
+						<li data-type="method" style="display: none">
+							<a href="CloudResult.html#CloudResult">CloudResult</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="Http.html">Http</a>
+					<ul class="methods">
+						<li data-type="method" style="display: none">
+							<a href="Http.html#AddBody">AddBody</a>
+						</li>
+						<li data-type="method" style="display: none">
+							<a href="Http.html#CreateRequest">CreateRequest</a>
+						</li>
+						<li data-type="method" style="display: none">
+							<a href="Http.html#DELETE">DELETE</a>
+						</li>
+						<li data-type="method" style="display: none">
+							<a href="Http.html#GET">GET</a>
+						</li>
+						<li data-type="method" style="display: none">
+							<a href="Http.html#GQL">GQL</a>
+						</li>
+						<li data-type="method" style="display: none">
+							<a href="Http.html#PATCH">PATCH</a>
+						</li>
+						<li data-type="method" style="display: none">
+							<a href="Http.html#POST">POST</a>
+						</li>
+						<li data-type="method" style="display: none">
+							<a href="Http.html#PUT">PUT</a>
+						</li>
+						<li data-type="method" style="display: none">
+							<a href="Http.html#RunRequest">RunRequest</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="HTTP_CLIENT.html">HTTP_CLIENT</a>
+					<ul class="methods">
+						<li data-type="method" style="display: none">
+							<a href="HTTP_CLIENT.html#SendAsync">SendAsync</a>
+						</li>
+					</ul>
+				</li>
+				<li><a href="HttpRequestMessage.html">HttpRequestMessage</a></li>
+				<li><a href="HttpResponseMessage.html">HttpResponseMessage</a></li>
+			</ul>
+			<h3>Global</h3>
+			<ul>
+				<li><a href="global.html#HttpMethod">HttpMethod</a></li>
+			</ul>
+		</nav>
+
+		<div id="main">
+			<h1 class="page-title">index.js</h1>
+
+			<section>
+				<article>
+					<pre
+						class="prettyprint source linenums"
+					><code>const { HttpMethod } = require("./HttpMethod");
 const { HttpRequestMessage } = require("./HttpRequestMessage");
 const { CancellationTokenSource } = require("./CancellationTokenSource");
 const { TimeSpan } = require("@bombitmanbomb/utils");
@@ -36,7 +166,7 @@ class Http {
 	 * @param {string} resource - Endpoint
 	 * @param {TimeSpan} [timeout=null]
 	 * @param {boolean} [throwOnError=true]
-	 * @returns {Promise<CloudResult<any>>}
+	 * @returns {Promise&lt;CloudResult&lt;any>>}
 	 * @memberof Http
 	 */
 	GET(resource, timeout = null, throwOnError = true) {
@@ -55,7 +185,7 @@ class Http {
 	 * @param {{}} variables
 	 * @param {TimeSpan} [timeout=null]
 	 * @param {boolean} [throwOnError=true]
-	 * @returns {Promise<CloudResult<any>>}
+	 * @returns {Promise&lt;CloudResult&lt;any>>}
 	 * @memberof Http
 	 */
 	GQL(query, variables, timeout = null, throwOnError = true) {
@@ -76,7 +206,7 @@ class Http {
 	 * @param {*} entity - Content
 	 * @param {TimeSpan} [timeout=null]
 	 * @param {boolean} [throwOnError=true]
-	 * @returns {Promise<CloudResult<any>>}
+	 * @returns {Promise&lt;CloudResult&lt;any>>}
 	 * @memberof Http
 	 */
 	POST(resource, entity, timeout = null, throwOnError = true) {
@@ -106,7 +236,7 @@ class Http {
 	 * @param {*} entity - Content
 	 * @param {TimeSpan} [timeout=null]
 	 * @param {boolean} [throwOnError=true]
-	 * @returns {Promise<CloudResult<any>>}
+	 * @returns {Promise&lt;CloudResult&lt;any>>}
 	 * @memberof Http
 	 */
 	PUT(resource, entity, timeout = null, throwOnError = true) {
@@ -127,7 +257,7 @@ class Http {
 	 * @param {*} entity - Content
 	 * @param {TimeSpan} [timeout=null]
 	 * @param {boolean} [throwOnError=true]
-	 * @returns {Promise<CloudResult<any>>}
+	 * @returns {Promise&lt;CloudResult&lt;any>>}
 	 * @memberof Http
 	 */
 	PATCH(resource, entity, timeout = null, throwOnError = true) {
@@ -147,7 +277,7 @@ class Http {
 	 * @param {string} resource - Endpoint
 	 * @param {TimeSpan} [timeout=null]
 	 * @param {boolean} [throwOnError=true]
-	 * @returns {Promise<CloudResult<any>>}
+	 * @returns {Promise&lt;CloudResult&lt;any>>}
 	 * @memberof Http
 	 */
 	DELETE(resource, timeout = null, throwOnError = true) {
@@ -175,7 +305,7 @@ class Http {
 			resource = this.ENDPOINT + "/" + resource;
 		}
 		var httpRequestMessage = new HttpRequestMessage(method, resource);
-		if ((this._currentAuthenticationToken != null) & flag) {
+		if ((this._currentAuthenticationToken != null) &amp; flag) {
 			httpRequestMessage.Headers[
 				this._currentAuthenticationHeader
 			] = this._currentAuthenticationToken;
@@ -203,7 +333,7 @@ class Http {
 	 * @param {HttpRequestMessage} requestSource
 	 * @param {TimeSpan} timeout
 	 * @param {boolean} [throwOnError=false]
-	 * @returns {Promise<CloudResult<any>>}
+	 * @returns {Promise&lt;CloudResult&lt;any>>}
 	 * @memberof Http
 	 * @instance
 	 */
@@ -233,7 +363,7 @@ class Http {
 				} catch (error2) {
 					exception = error2;
 				}
-				// Handle Error Response, Will Retry after <delay>
+				// Handle Error Response, Will Retry after &lt;delay>
 				if (
 					result == null ||
 					result.StatusCode === 429 ||
@@ -247,7 +377,7 @@ class Http {
 						delay *= 2; // Double Retry Time
 					}
 				}
-			} while (result == null && remainingRetries-- > 0);
+			} while (result == null &amp;&amp; remainingRetries-- > 0);
 			if (result == null) {
 				if (!throwOnError) {
 					result1 = new CloudResult(null, 0, null, null);
@@ -280,3 +410,28 @@ class Http {
 	}
 }
 module.exports = { Http };
+</code></pre>
+				</article>
+			</section>
+		</div>
+
+		<br class="clear" />
+
+		<footer>
+			Documentation generated by
+			<a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Mar 26
+			2021 09:05:15 GMT-0400 (Eastern Daylight Time) using the
+			<a href="https://github.com/clenemt/docdash">docdash</a> theme.
+		</footer>
+
+		<script>
+			prettyPrint();
+		</script>
+		<script src="scripts/polyfill.js"></script>
+		<script src="scripts/linenumber.js"></script>
+
+		<script src="scripts/search.js" defer></script>
+
+		<script src="scripts/collapse.js" defer></script>
+	</body>
+</html>

@@ -1,4 +1,4 @@
-const { Enumerable } = require("../Util/Enumerable");
+const { Enumerable } = require("@bombitmanbomb/utils");
 /**
  * Enumberable for AccountType
  * @readonly
