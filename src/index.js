@@ -17,7 +17,7 @@ class Http {
 			new TimeSpan(Options.DefaultTimeout) || TimeSpan.fromSeconds(5);
 		this.UserAgent = new ProductInfoHeaderValue(
 			Options.UserAgent || "BitFetch",
-			require("../../../package.json").version
+			require("../package.json").version
 		);
 		this.DEBUG_REQUESTS = Options.DEBUG_REQUESTS;
 		this._currentAuthenticationToken = Options.Token || null;
