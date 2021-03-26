@@ -1,5 +1,5 @@
 dependencies:
-  "@bombitmanbomb/utils": 1.0.0
+  "@bombitmanbomb/utils": 1.1.0
   node-fetch: 2.6.1
   uuid: 8.3.2
 devDependencies:
@@ -34,12 +34,12 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-4T7Pb244rxH24yR116LAuJ+adxXXnHhZaLJjegJVKSdoNCe4x1eDBaud5YIcQFcqzsaD5BHvJw5BQ0AZapdCRw==
-  /@bombitmanbomb/utils/1.0.0:
+  /@bombitmanbomb/utils/1.1.0:
     dev: false
     engines:
       node: ">=14.14.0"
     resolution:
-      integrity: sha512-W/qdUc9dHyBpyO/kuBRSlWsmIkxss+N4NhcBm2GyBxPFk2zU+8uMUOOF3at5lOUtYOUaFBrXhwM6WbPIQR1D7Q==
+      integrity: sha512-WwglUmVTZRW9FVuePaI/IZqq8L4OFzkzmUnhShkTfHOfR1TO2yTs0CzOaWCieiyr5PoSjFHaS/C4JSo/2evWDw==
   /@eslint/eslintrc/0.4.0:
     dependencies:
       ajv: 6.12.6
@@ -947,7 +947,7 @@ packages:
     resolution:
       integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 specifiers:
-  "@bombitmanbomb/utils": ^1.0.0
+  "@bombitmanbomb/utils": ^1.1.0
   docdash: ^1.2.0
   eslint: ^7.21.0
   jsdoc: ^3.6.6
