@@ -19,7 +19,7 @@ class Http {
 			Options.UserAgent || "BitFetch",
 			require("../package.json").version
 		);
-		this.DEBUG_REQUESTS = Options.DEBUG_REQUESTS;
+		this.DEBUG_REQUESTS = Options.DEBUG_REQUESTS || false;
 		this._currentAuthenticationToken = Options.Token || null;
 		this._currentAuthenticationHeader = Options.AuthHeader || "Authorization";
 		this.HttpClient = new HTTP_CLIENT();

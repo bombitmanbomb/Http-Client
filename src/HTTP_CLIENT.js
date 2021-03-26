@@ -28,7 +28,6 @@ class HTTP_CLIENT {
 		)
 			dat.body = request.Content;
 		let ERROR;
-		console.log(dat);
 		let response = await fetch(request.RequestUri, dat)
 			.then((res) => {
 				state = res.status;
