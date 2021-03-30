@@ -6,6 +6,9 @@ class ProductInfoHeaderValue {
 	Value() {
 		return this.Product + " " + this.Version;
 	}
+	toString() {
+		return this.Value()
+	}
 }
 module.exports = {
 	ProductInfoHeaderValue,
