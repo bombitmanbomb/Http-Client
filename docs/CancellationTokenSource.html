@@ -1,211 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>CancellationTokenSource - Documentation</title>
+<head>
+    
+    <meta charset="utf-8">
+    <title>CancellationTokenSource - Documentation</title>
+    
+    
+    
+    
+    
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    
+    <meta property="og:url" content=""/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
 
-		<meta property="og:title" content="" />
-		<meta property="og:type" content="website" />
-		<meta property="og:image" content="" />
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-		<meta property="og:url" content="" />
+<label for="nav-trigger" class="overlay"></label>
 
-		<script src="scripts/prettify/prettify.js"></script>
-		<script src="scripts/prettify/lang-css.js"></script>
-		<!--[if lt IE 9]>
-			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link type="text/css" rel="stylesheet" href="styles/prettify.css" />
-		<link type="text/css" rel="stylesheet" href="styles/jsdoc.css" />
-		<script src="scripts/nav.js" defer></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	</head>
-	<body>
-		<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-		<label for="nav-trigger" class="navicon-button x">
-			<div class="navicon"></div>
-		</label>
+<nav class="wrap">
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/PolyLogiX-Studio/Neos.js" target="_blank" class="menu-item" id="website_link" >Project Website</a></h2><h2><a href="https://github.com/PolyLogiX-Studio/Neos.js/discussions" target="_blank" class="menu-item" id="forum_link" >Discussions</a></h2><h2><a href="https://discord.gg/6y2A4Pk" target="_blank" class="menu-item" id="discord_link" >Discord</a></h2><h3>Classes</h3><ul><li><a href="CancellationTokenSource.html">CancellationTokenSource</a></li><li><a href="CloudResult.html">CloudResult</a><ul class='methods'><li data-type='method' style='display: none;'><a href="CloudResult.html#CloudResult">CloudResult</a></li></ul></li><li><a href="Http.html">Http</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Http.html#AddBody">AddBody</a></li><li data-type='method' style='display: none;'><a href="Http.html#CreateRequest">CreateRequest</a></li><li data-type='method' style='display: none;'><a href="Http.html#DELETE">DELETE</a></li><li data-type='method' style='display: none;'><a href="Http.html#GET">GET</a></li><li data-type='method' style='display: none;'><a href="Http.html#GQL">GQL</a></li><li data-type='method' style='display: none;'><a href="Http.html#PATCH">PATCH</a></li><li data-type='method' style='display: none;'><a href="Http.html#POST">POST</a></li><li data-type='method' style='display: none;'><a href="Http.html#PUT">PUT</a></li><li data-type='method' style='display: none;'><a href="Http.html#RunRequest">RunRequest</a></li></ul></li><li><a href="HTTP_CLIENT.html">HTTP_CLIENT</a><ul class='methods'><li data-type='method' style='display: none;'><a href="HTTP_CLIENT.html#SendAsync">SendAsync</a></li></ul></li><li><a href="HttpRequestMessage.html">HttpRequestMessage</a></li><li><a href="HttpResponseMessage.html">HttpResponseMessage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#HttpMethod">HttpMethod</a></li></ul>
+</nav>
 
-		<label for="nav-trigger" class="overlay"></label>
+<div id="main">
+    
+    <h1 class="page-title">CancellationTokenSource</h1>
+    
 
-		<nav class="wrap">
-			<input type="text" id="nav-search" placeholder="Search" />
+    
 
-			<h2><a href="index.html">Home</a></h2>
-			<h2>
-				<a
-					href="https://github.com/bombitmanbomb/utils"
-					target="_blank"
-					class="menu-item"
-					id="website_link"
-					>Project Website</a
-				>
-			</h2>
-			<h2>
-				<a
-					href="https://github.com/bombitmanbomb/utils/discussions"
-					target="_blank"
-					class="menu-item"
-					id="forum_link"
-					>Discussions</a
-				>
-			</h2>
-			<h2>
-				<a
-					href="https://discord.gg/6y2A4Pk"
-					target="_blank"
-					class="menu-item"
-					id="discord_link"
-					>Discord</a
-				>
-			</h2>
-			<h3>Classes</h3>
-			<ul>
-				<li>
-					<a href="CancellationTokenSource.html">CancellationTokenSource</a>
-				</li>
-				<li>
-					<a href="CloudResult.html">CloudResult</a>
-					<ul class="methods">
-						<li data-type="method" style="display: none">
-							<a href="CloudResult.html#CloudResult">CloudResult</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="Http.html">Http</a>
-					<ul class="methods">
-						<li data-type="method" style="display: none">
-							<a href="Http.html#AddBody">AddBody</a>
-						</li>
-						<li data-type="method" style="display: none">
-							<a href="Http.html#CreateRequest">CreateRequest</a>
-						</li>
-						<li data-type="method" style="display: none">
-							<a href="Http.html#DELETE">DELETE</a>
-						</li>
-						<li data-type="method" style="display: none">
-							<a href="Http.html#GET">GET</a>
-						</li>
-						<li data-type="method" style="display: none">
-							<a href="Http.html#GQL">GQL</a>
-						</li>
-						<li data-type="method" style="display: none">
-							<a href="Http.html#PATCH">PATCH</a>
-						</li>
-						<li data-type="method" style="display: none">
-							<a href="Http.html#POST">POST</a>
-						</li>
-						<li data-type="method" style="display: none">
-							<a href="Http.html#PUT">PUT</a>
-						</li>
-						<li data-type="method" style="display: none">
-							<a href="Http.html#RunRequest">RunRequest</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="HTTP_CLIENT.html">HTTP_CLIENT</a>
-					<ul class="methods">
-						<li data-type="method" style="display: none">
-							<a href="HTTP_CLIENT.html#SendAsync">SendAsync</a>
-						</li>
-					</ul>
-				</li>
-				<li><a href="HttpRequestMessage.html">HttpRequestMessage</a></li>
-				<li><a href="HttpResponseMessage.html">HttpResponseMessage</a></li>
-			</ul>
-			<h3>Global</h3>
-			<ul>
-				<li><a href="global.html#HttpMethod">HttpMethod</a></li>
-			</ul>
-		</nav>
 
-		<div id="main">
-			<h1 class="page-title">CancellationTokenSource</h1>
 
-			<section>
-				<header>
-					<h2>CancellationTokenSource</h2>
-				</header>
 
-				<article>
-					<div class="container-overview">
-						<h4 class="name" id="CancellationTokenSource">
-							<span class="type-signature"></span>new
-							CancellationTokenSource<span class="signature">()</span
-							><span class="type-signature"></span>
-						</h4>
+<section>
 
-						<dl class="details">
-							<dt class="tag-source">Source:</dt>
-							<dd class="tag-source">
-								<ul class="dummy">
-									<li>
-										<a href="CancellationTokenSource.js.html"
-											>CancellationTokenSource.js</a
-										>,
-										<a href="CancellationTokenSource.js.html#line2">line 2</a>
-									</li>
-								</ul>
-							</dd>
-						</dl>
+<header>
+    
+        <h2>
+        CancellationTokenSource
+        </h2>
+        
+    
+</header>
 
-						<div class="description usertext">
-							Generates a Cancelation Token
-						</div>
-					</div>
+<article>
+    
+        <div class="container-overview">
+        
+            
 
-					<h3 class="subsection-title">Members</h3>
+    
 
-					<h4 class="name" id="Token">
-						<span class="type-signature"></span>Token<span
-							class="type-signature"
-						>
-							:string</span
-						>
-					</h4>
+    <h4 class="name" id="CancellationTokenSource"><span class="type-signature"></span>new CancellationTokenSource<span class="signature">()</span><span class="type-signature"></span></h4>
 
-					<dl class="details">
-						<dt class="tag-source">Source:</dt>
-						<dd class="tag-source">
-							<ul class="dummy">
-								<li>
-									<a href="CancellationTokenSource.js.html"
-										>CancellationTokenSource.js</a
-									>, <a href="CancellationTokenSource.js.html#line9">line 9</a>
-								</li>
-							</ul>
-						</dd>
-					</dl>
+    
 
-					<h5>Type:</h5>
-					<ul>
-						<li>
-							<span class="param-type">string</span>
-						</li>
-					</ul>
-				</article>
-			</section>
-		</div>
 
-		<br class="clear" />
 
-		<footer>
-			Documentation generated by
-			<a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Mar 26
-			2021 09:34:02 GMT-0400 (Eastern Daylight Time) using the
-			<a href="https://github.com/clenemt/docdash">docdash</a> theme.
-		</footer>
 
-		<script>
-			prettyPrint();
-		</script>
-		<script src="scripts/polyfill.js"></script>
-		<script src="scripts/linenumber.js"></script>
+<dl class="details">
 
-		<script src="scripts/search.js" defer></script>
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="CancellationTokenSource.js.html">CancellationTokenSource.js</a>, <a href="CancellationTokenSource.js.html#line2">line 2</a>
+    </li></ul></dd>
+    
 
-		<script src="scripts/collapse.js" defer></script>
-	</body>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    .Generates a Cancelation Token
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="Token"><span class="type-signature"></span>Token<span class="type-signature"> :string</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="CancellationTokenSource.js.html">CancellationTokenSource.js</a>, <a href="CancellationTokenSource.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">string</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Fri Apr 09 2021 21:41:57 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
 </html>

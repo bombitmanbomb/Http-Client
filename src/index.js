@@ -5,8 +5,9 @@ const { TimeSpan } = require("@bombitmanbomb/utils");
 const { CloudResult } = require("./CloudResult");
 const { ProductInfoHeaderValue } = require("./ProductInfoHeaderValue");
 const { HTTP_CLIENT } = require("./HTTP_CLIENT");
-/**
+/**.
  * HTTP Client
+ *
  * @class Http
  */
 class Http {
@@ -20,6 +21,8 @@ class Http {
 			require("../package.json").version
 		);
 		this.DEBUG_REQUESTS = Options.DEBUG_REQUESTS || false;
+		this.DEFAULT_RETRIES =
+			Options.DEBUG_REQUESTS != null ? Options.DEFAULT_RETRIES : 10;
 		this._currentAuthenticationToken = Options.Token || null;
 		this._currentAuthenticationHeader = Options.AuthHeader || "Authorization";
 		this.HttpClient = new HTTP_CLIENT();
@@ -30,7 +33,7 @@ class Http {
 	OnDebug(...info) {
 		console.log(...info);
 	}
-	/**
+	/**.
 	 * Make a Get Request
 	 *
 	 * @param {string} resource - Endpoint
@@ -48,7 +51,7 @@ class Http {
 			throwOnError
 		);
 	}
-	/**
+	/**.
 	 * Create a GraphQL Request
 	 *
 	 * @param {string} query
@@ -69,7 +72,7 @@ class Http {
 			throwOnError
 		);
 	}
-	/**
+	/**.
 	 * Make a Post Request
 	 *
 	 * @param {string} resource - Endpoint
@@ -99,7 +102,7 @@ class Http {
 		}, TimeSpan.fromMinutes(60.0));
 	}
 	*/
-	/**
+	/**.
 	 * Make a Put Request
 	 *
 	 * @param {string} resource - Endpoint
@@ -120,7 +123,7 @@ class Http {
 			throwOnError
 		);
 	}
-	/**
+	/**.
 	 * Make a Patch Request
 	 *
 	 * @param {string} resource - Endpoint
@@ -141,7 +144,7 @@ class Http {
 			throwOnError
 		);
 	}
-	/**
+	/**.
 	 * Make a Delete Request
 	 *
 	 * @param {string} resource - Endpoint
@@ -159,7 +162,7 @@ class Http {
 			throwOnError
 		);
 	}
-	/**
+	/**.
 	 * Build a Http Request
 	 *
 	 * @param {string} resource - Endpoint
@@ -183,12 +186,14 @@ class Http {
 		httpRequestMessage.Headers.UserAgent = this.UserAgent.Value();
 		return httpRequestMessage;
 	}
-	/**
-	 * Add a body to a request
+	/**.
+	 * Add a body to a request.
 	 *
 	 * Internal
+	 *
 	 * @param {HttpRequestMessage} message
 	 * @instance
+	 * @param contentType
 	 * @param {*} entity - Content
 	 * @memberof Http
 	 */
@@ -196,9 +201,9 @@ class Http {
 		message.Headers["Content-Type"] = contentType;
 		if (entity) message.Content = JSON.stringify(entity);
 	}
-
-	/**
+	/**.
 	 * Run a {@link #httprequestmessage HttpRequest}
+	 *
 	 * @see Http#CreateRequest
 	 * @param {HttpRequestMessage} requestSource
 	 * @param {TimeSpan} timeout
@@ -213,6 +218,9 @@ class Http {
 		let exception = null;
 		let content;
 		let result1;
+		let start = new Date();
+		let statusCode = 0;
+		let success = false;
 		try {
 			let remainingRetries = this.DEFAULT_RETRIES; //lgtm [js/useless-assignment-to-local] False Positive
 			let delay = 250;
@@ -228,11 +236,13 @@ class Http {
 						request,
 						cancellationTokenSource.Token
 					);
+					success = true;
 					if (this.DEBUG_REQUESTS)
 						this.OnDebug(request.Method, request.RequestUri, result.StatusCode);
 				} catch (error2) {
 					exception = error2;
 				}
+				statusCode = result != null ? result.StatusCode : 0;
 				// Handle Error Response, Will Retry after <delay>
 				if (
 					result == null ||
@@ -240,20 +250,39 @@ class Http {
 					result.StatusCode === 500
 				) {
 					if (result == null) {
-						this.OnDebug(
-							`Exception running ${request.Method} request to ${request.RequestUri}. Remaining retries: ${remainingRetries}`
-						);
+						if (result == null)
+							this.OnDebug(
+								`Exception running ${request.Method} request to ${
+									request.RequestUri
+								}. Remaining retries: ${remainingRetries}. Elapsed: ${
+									(new Date() - start).getTime() / 1000
+								}s`
+							);
+						else if (result.StatusCode == 500)
+							this.OnDebug(
+								`Server Error running ${request.Method} request to ${
+									request.RequestUri
+								}. Remaining retries: ${remainingRetries}. Elapsed: ${
+									(new Date() - start).getTime() / 1000
+								}s`
+							);
+						success = false;
 						await TimeSpan.Delay(new TimeSpan(delay)); // Wait and then retry
 						delay *= 2; // Double Retry Time
+						delay = Math.min(10000, delay);
 					}
 				}
-			} while (result == null && remainingRetries-- > 0);
+			} while (!success && remainingRetries-- > 0);
 			if (result == null) {
 				if (!throwOnError) {
 					result1 = new CloudResult(null, 0, null, null);
 				} else {
 					if (exception == null)
-						this.OnError("Failed to get response. Exception is null");
+						this.OnError(
+							`Failed to get response. Last status code: ${statusCode}, Exception is null, Elapsed: ${
+								(new Date() - start).getTime() / 1000
+							}s`
+						);
 					this.OnError(exception);
 				}
 			} else {

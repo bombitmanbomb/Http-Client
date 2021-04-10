@@ -7,7 +7,7 @@ class ProductInfoHeaderValue {
 		return this.Product + " " + this.Version;
 	}
 	toString() {
-		return this.Value()
+		return this.Value();
 	}
 }
 module.exports = {

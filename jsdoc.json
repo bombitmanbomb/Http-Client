@@ -35,13 +35,13 @@
 		"scripts": [],
 		"menu": {
 			"Project Website": {
-				"href": "https://github.com/bombitmanbomb/utils",
+				"href": "https://github.com/PolyLogiX-Studio/Neos.js",
 				"target": "_blank",
 				"class": "menu-item",
 				"id": "website_link"
 			},
 			"Discussions": {
-				"href": "https://github.com/bombitmanbomb/utils/discussions",
+				"href": "https://github.com/PolyLogiX-Studio/Neos.js/discussions",
 				"target": "_blank",
 				"class": "menu-item",
 				"id": "forum_link"
@@ -56,5 +56,6 @@
 		"scopeInOutputPath": true,
 		"nameInOutputPath": true,
 		"versionInOutputPath": true
-	}
+	},
+	"plugins": ["node_modules/jsdoc-tsimport-plugin/index.js"]
 }
