@@ -249,13 +249,12 @@ class Http {
 					result.StatusCode === 429 ||
 					result.StatusCode === 500
 				) {
-					if (result == null) {
 						if (result == null)
 							this.OnDebug(
 								`Exception running ${request.Method} request to ${
 									request.RequestUri
 								}. Remaining retries: ${remainingRetries}. Elapsed: ${
-									(new Date() - start).getTime() / 1000
+									(new Date((new Date()) - start)).getTime() / 1000
 								}s`
 							);
 						else if (result.StatusCode == 500)
@@ -263,14 +262,14 @@ class Http {
 								`Server Error running ${request.Method} request to ${
 									request.RequestUri
 								}. Remaining retries: ${remainingRetries}. Elapsed: ${
-									(new Date() - start).getTime() / 1000
+									(new Date((new Date()) - start)).getTime() / 1000
 								}s`
 							);
 						success = false;
 						await TimeSpan.Delay(new TimeSpan(delay)); // Wait and then retry
 						delay *= 2; // Double Retry Time
 						delay = Math.min(10000, delay);
-					}
+					
 				}
 			} while (!success && remainingRetries-- > 0);
 			if (result == null) {
@@ -280,7 +279,7 @@ class Http {
 					if (exception == null)
 						this.OnError(
 							`Failed to get response. Last status code: ${statusCode}, Exception is null, Elapsed: ${
-								(new Date() - start).getTime() / 1000
+								(new Date((new Date()) - start)).getTime() / 1000
 							}s`
 						);
 					this.OnError(exception);
