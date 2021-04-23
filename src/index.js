@@ -178,7 +178,7 @@ class Http {
 			resource = this.ENDPOINT + "/" + resource;
 		}
 		var httpRequestMessage = new HttpRequestMessage(method, resource);
-		if ((this._currentAuthenticationToken != null) & flag) {
+		if ((this._currentAuthenticationToken != null) && flag) {
 			httpRequestMessage.Headers[
 				this._currentAuthenticationHeader
 			] = this._currentAuthenticationToken;
