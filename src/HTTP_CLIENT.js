@@ -14,12 +14,15 @@ class HTTP_CLIENT {
 	 * @returns {Promise<HttpResponseMessage>}
 	 * @memberof HTTP_CLIENT
 	 */
-	async SendAsync(request) {
+	async SendAsync(request, token) {
 		let state;
 		let resHeaders;
 		let dat = {
 			method: request.Method,
 		};
+		if (token) {
+			dat.signal = token.signal;
+		}
 		dat.headers = request.Headers;
 		if (
 			request.Method === "POST" ||

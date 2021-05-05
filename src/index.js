@@ -15,14 +15,16 @@ class Http {
 		this.Bot = Bot;
 		this.ENDPOINT = Options.ENDPOINT || "";
 		this.DefaultTimeout =
-			new TimeSpan(Options.DefaultTimeout) || TimeSpan.fromSeconds(5);
+			Options.DefaultTimeout != null
+				? new TimeSpan(Options.DefaultTimeout)
+				: TimeSpan.fromSeconds(5);
 		this.UserAgent = new ProductInfoHeaderValue(
 			Options.UserAgent || "BitFetch",
 			require("../package.json").version
 		);
 		this.DEBUG_REQUESTS = Options.DEBUG_REQUESTS || false;
 		this.DEFAULT_RETRIES =
-			Options.DEBUG_REQUESTS != null ? Options.DEFAULT_RETRIES : 10;
+			Options.DEFAULT_RETRIES != null ? Options.DEFAULT_RETRIES : 10;
 		this._currentAuthenticationToken = Options.Token || null;
 		this._currentAuthenticationHeader = Options.AuthHeader || "Authorization";
 		this.HttpClient = new HTTP_CLIENT();
@@ -178,7 +180,7 @@ class Http {
 			resource = this.ENDPOINT + "/" + resource;
 		}
 		var httpRequestMessage = new HttpRequestMessage(method, resource);
-		if ((this._currentAuthenticationToken != null) && flag) {
+		if (this._currentAuthenticationToken != null && flag) {
 			httpRequestMessage.Headers[
 				this._currentAuthenticationHeader
 			] = this._currentAuthenticationToken;
@@ -212,7 +214,14 @@ class Http {
 	 * @memberof Http
 	 * @instance
 	 */
-	async RunRequest(requestSource, timeout, throwOnError = false) {
+	async RunRequest(requestSource, timeout = null, throwOnError = false) {
+		if (timeout != null) {
+			if (!(timeout instanceof TimeSpan)) {
+				timeout = new TimeSpan(timeout);
+			}
+		} else {
+			timeout = this.DefaultTimeout;
+		}
 		let request = null;
 		let result = null;
 		let exception = null;
@@ -227,9 +236,7 @@ class Http {
 			do {
 				try {
 					request = await requestSource();
-					let cancellationTokenSource = new CancellationTokenSource(
-						timeout || this.DefaultTimeout
-					);
+					let cancellationTokenSource = new CancellationTokenSource(timeout);
 					if (this.DEBUG_REQUESTS)
 						this.OnDebug(request.Method, request.RequestUri, request.Content);
 					result = await this.HttpClient.SendAsync(
@@ -249,27 +256,26 @@ class Http {
 					result.StatusCode === 429 ||
 					result.StatusCode === 500
 				) {
-						if (result == null)
-							this.OnDebug(
-								`Exception running ${request.Method} request to ${
-									request.RequestUri
-								}. Remaining retries: ${remainingRetries}. Elapsed: ${
-									(new Date((new Date()) - start)).getTime() / 1000
-								}s`
-							);
-						else if (result.StatusCode == 500)
-							this.OnDebug(
-								`Server Error running ${request.Method} request to ${
-									request.RequestUri
-								}. Remaining retries: ${remainingRetries}. Elapsed: ${
-									(new Date((new Date()) - start)).getTime() / 1000
-								}s`
-							);
-						success = false;
-						await TimeSpan.Delay(new TimeSpan(delay)); // Wait and then retry
-						delay *= 2; // Double Retry Time
-						delay = Math.min(10000, delay);
-					
+					if (result == null)
+						this.OnDebug(
+							`Exception running ${request.Method} request to ${
+								request.RequestUri
+							}. Remaining retries: ${remainingRetries}. Elapsed: ${
+								new Date(new Date() - start).getTime() / 1000
+							}s`
+						);
+					else if (result.StatusCode == 500)
+						this.OnDebug(
+							`Server Error running ${request.Method} request to ${
+								request.RequestUri
+							}. Remaining retries: ${remainingRetries}. Elapsed: ${
+								new Date(new Date() - start).getTime() / 1000
+							}s`
+						);
+					success = false;
+					await TimeSpan.Delay(new TimeSpan(delay)); // Wait and then retry
+					delay *= 2; // Double Retry Time
+					delay = Math.min(10000, delay);
 				}
 			} while (!success && remainingRetries-- > 0);
 			if (result == null) {
@@ -279,7 +285,7 @@ class Http {
 					if (exception == null)
 						this.OnError(
 							`Failed to get response. Last status code: ${statusCode}, Exception is null, Elapsed: ${
-								(new Date((new Date()) - start)).getTime() / 1000
+								new Date(new Date() - start).getTime() / 1000
 							}s`
 						);
 					this.OnError(exception);

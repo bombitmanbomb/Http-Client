@@ -1,20 +1,37 @@
-const { v4: uuidv4 } = require("uuid");
+const AbortController = require("abort-controller");
 /**.
  * Generates a Cancelation Token
  *
  * @class CancellationTokenSource
  */
 class CancellationTokenSource {
-	constructor() {
+	constructor(timeout) {
 		/**@type {string} */
-		this.Token = uuidv4();
 		this._cancel = false;
+		this.controller = new AbortController();
+		this.abort = this.abort.bind(this);
+		if (timeout) {
+			setTimeout(this.abort, timeout);
+		}
 	}
 	Cancel() {
-		this._cancel = true;
+		this.abort();
+	}
+	get aborted() {
+		return this._cancel;
+	}
+	get signal() {
+		return this.controller.signal;
 	}
 	IsCancellationRequested() {
 		return this._cancel;
+	}
+	get Token() {
+		return this;
+	}
+	abort() {
+		this._cancel = true;
+		this.controller.abort();
 	}
 }
 module.exports = {
