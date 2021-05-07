@@ -20,7 +20,7 @@
 	},
 	"homepage": "https://github.com/bombitmanbomb/Http-Client#readme",
 	"dependencies": {
-		"@bombitmanbomb/utils": "^1.2.0",
+		"@bombitmanbomb/utils": "^2.0.0",
 		"abort-controller": "^3.0.0",
 		"node-fetch": "^2.6.1"
 	},
