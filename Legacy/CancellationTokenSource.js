@@ -11,7 +11,7 @@ class CancellationTokenSource {
 		this.controller = new AbortController();
 		this.abort = this.abort.bind(this);
 		if (timeout) {
-			setTimeout(this.abort, timeout.msecs !=null ? timeout.msecs : timeout);
+			setTimeout(this.abort, timeout.msecs != null ? timeout.msecs : timeout);
 		}
 	}
 	Cancel() {
