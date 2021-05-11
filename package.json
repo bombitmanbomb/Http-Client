@@ -2,11 +2,12 @@
 	"name": "@bombitmanbomb/http-client",
 	"version": "2.0.0",
 	"description": "",
-	"main": "src",
+	"main": "lib",
+	"types": "lib",
 	"scripts": {
 		"lint": "prettier --use-tabs --write . && eslint -c .eslintrc.json --fix .",
 		"ready": "npm run document && npm run lint",
-		"build": "Del dist /S /Q && npm run prepare",
+		"build": "Del lib /S /Q && npm run prepare",
 		"prepare": "tsc"
 	},
 	"repository": {
@@ -21,14 +22,15 @@
 	},
 	"homepage": "https://github.com/bombitmanbomb/Http-Client#readme",
 	"dependencies": {
-		"@bombitmanbomb/utils": "^2.1.4",
+		"@bombitmanbomb/utils": "^2.2.0",
 		"abort-controller": "^3.0.0",
+		"form-data": "^4.0.0",
 		"node-fetch": "^2.6.1"
 	},
 	"devDependencies": {
 		"@types/core-js": "^2.5.4",
-		"@types/node-fetch": "^2.5.10",
 		"@types/node": "^15.0.2",
+		"@types/node-fetch": "^2.5.10",
 		"@typescript-eslint/eslint-plugin": "^4.23.0",
 		"@typescript-eslint/parser": "^4.23.0",
 		"eslint": "^7.21.0",
