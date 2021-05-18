@@ -41,7 +41,7 @@ export class Http {
 		this._currentAuthenticationHeader = Options?.AuthHeader ?? "Authorization";
 		this._currentAuthenticationToken = Options?.Token ?? null;
 		this.UserAgent = new ProductInfoHeaderValue(
-			Options?.UserAgent ?? "BitFetch",
+			Options?.UserAgent ?? "CloudX",
 			Options?.Version ?? Version
 		);
 	}
