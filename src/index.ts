@@ -23,8 +23,8 @@ export class Http {
 	public DEBUG_REQUESTS: boolean;
 	public DEFAULT_RETRIES: number;
 	public HttpClient: HTTP_CLIENT;
-	private _currentAuthenticationToken: string | null;
-	private _currentAuthenticationHeader: string;
+	public _currentAuthenticationToken: string | null;
+	public _currentAuthenticationHeader: string;
 	constructor(Bot?: unknown, Options?: HttpOptions) {
 		this.HttpClient = new HTTP_CLIENT();
 		this.Bot = Bot;
