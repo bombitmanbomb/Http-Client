@@ -56,4 +56,14 @@ export class CloudResult<T> {
 	public get IsSuccessStatusCode(): boolean {
 		return this.IsOK;
 	}
+	public Convert<A>(constructor: Constructable<A>): CloudResult<T> {
+		try {
+			this.Content = (new constructor(this.Content) as unknown) as T;
+		} catch (error) {}
+		return this;
+	}
+}
+
+interface Constructable<T> {
+	new (...args: any): T;
 }

@@ -9,12 +9,11 @@ import { HTTP_CLIENT } from "./HTTP_CLIENT";
 
 export { HttpMethod } from "./HttpMethod";
 export { HttpRequestMessage } from "./HttpRequestMessage";
-export { HttpResponseMessage } from './HttpResponseMessage';
+export { HttpResponseMessage } from "./HttpResponseMessage";
 export { CancellationTokenSource } from "./CancellationTokenSource";
 export { CloudResult } from "./CloudResult";
 export { ProductInfoHeaderValue } from "./ProductInfoHeaderValue";
 export { HTTP_CLIENT } from "./HTTP_CLIENT";
-
 
 export class Http {
 	public Bot: unknown;
@@ -80,7 +79,7 @@ export class Http {
 		message: HttpRequestMessage,
 		entity: unknown,
 		contentType = "application/json"
-	):void {
+	): void {
 		Object.defineProperty(message.Headers, "Content-Type", {
 			value: contentType,
 		});
