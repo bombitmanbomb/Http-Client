@@ -7,7 +7,7 @@ export class HttpRequestMessage {
 	RequestUri: string;
 	constructor(method: HttpMethod, uri: string) {
 		this.Headers = {
-			Accept: "application.json",
+			Accept: "application/json",
 		};
 		this.Content = null;
 		this.Method = method;

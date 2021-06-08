@@ -1,4 +1,4 @@
-const Version = "2.0.0";
+const Version = "2.1.2";
 import { HttpMethod } from "./HttpMethod";
 import { HttpRequestMessage } from "./HttpRequestMessage";
 import { CancellationTokenSource } from "./CancellationTokenSource";
@@ -82,8 +82,13 @@ export class Http {
 	): void {
 		Object.defineProperty(message.Headers, "Content-Type", {
 			value: contentType,
+			enumerable: true,
 		});
-		if (entity != null) message.Content = JSON.stringify(entity);
+		try {
+			if (entity != null) message.Content = JSON.stringify(entity);
+		} catch (error) {
+			message.Content = entity as null;
+		}
 	}
 	public async RunRequest(
 		requestSource: () => HttpRequestMessage,
