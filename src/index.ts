@@ -6,6 +6,7 @@ import { TimeSpan } from "@bombitmanbomb/utils";
 import { CloudResult } from "./CloudResult";
 import { ProductInfoHeaderValue } from "./ProductInfoHeaderValue";
 import { HTTP_CLIENT } from "./HTTP_CLIENT";
+import { truncate } from "fs";
 
 export { HttpMethod } from "./HttpMethod";
 export { HttpRequestMessage } from "./HttpRequestMessage";
@@ -68,7 +69,7 @@ export class Http {
 			Object.defineProperty(
 				httpRequestMessage.Headers,
 				this._currentAuthenticationHeader,
-				{ value: this._currentAuthenticationToken }
+				{ value: this._currentAuthenticationToken, enumerable:true }
 			);
 		Object.defineProperty(httpRequestMessage.Headers, "UserAgent", {
 			value: this.UserAgent.Value(),
