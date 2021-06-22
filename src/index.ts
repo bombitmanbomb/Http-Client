@@ -6,8 +6,6 @@ import { TimeSpan } from "@bombitmanbomb/utils";
 import { CloudResult } from "./CloudResult";
 import { ProductInfoHeaderValue } from "./ProductInfoHeaderValue";
 import { HTTP_CLIENT } from "./HTTP_CLIENT";
-import { truncate } from "fs";
-
 export { HttpMethod } from "./HttpMethod";
 export { HttpRequestMessage } from "./HttpRequestMessage";
 export { HttpResponseMessage } from "./HttpResponseMessage";
