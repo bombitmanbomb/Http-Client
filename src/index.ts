@@ -18,6 +18,7 @@ export class Http {
 	public Bot: unknown;
 	public DefaultTimeout: TimeSpan;
 	public ENDPOINT: string;
+	public DefaultHeaders: {[prop:string]:any}
 	public UserAgent: ProductInfoHeaderValue;
 	public DEBUG_REQUESTS: boolean;
 	public DEFAULT_RETRIES: number;
@@ -38,6 +39,7 @@ export class Http {
 		this.DEFAULT_RETRIES = Options?.DEFAULT_RETRIES ?? 10;
 		this._currentAuthenticationHeader = Options?.AuthHeader ?? "Authorization";
 		this._currentAuthenticationToken = Options?.Token ?? null;
+		this.DefaultHeaders = Options?.DefaultHeaders ?? {}
 		this.UserAgent = new ProductInfoHeaderValue(
 			Options?.UserAgent ?? "CloudX",
 			Options?.Version ?? Version
@@ -63,12 +65,14 @@ export class Http {
 			resource = this.ENDPOINT + "/" + resource;
 		}
 		const httpRequestMessage = new HttpRequestMessage(method, resource);
+		httpRequestMessage.Headers = this.DefaultHeaders ?? {}
 		if (this._currentAuthenticationToken != null && flag)
 			Object.defineProperty(
 				httpRequestMessage.Headers,
 				this._currentAuthenticationHeader,
 				{ value: this._currentAuthenticationToken, enumerable:true }
 			);
+
 		Object.defineProperty(httpRequestMessage.Headers, "UserAgent", {
 			value: this.UserAgent.Value(),
 		});
@@ -310,4 +314,5 @@ interface HttpOptions {
 	AuthHeader?: string;
 	UserAgent?: string;
 	Version?: string | number;
+	DefaultHeaders?: {[prop:string]:any}
 }
