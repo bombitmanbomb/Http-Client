@@ -1,0 +1,23 @@
+version: 1
+# Sources mention which Files/Dirs to be taken for Analysis
+sources:
+  #Files or Directories to be Excluded are mentioned in exclusions
+  exclusions:
+    - 'test'
+    - 'generated'
+    - 'mock'
+    - 'thirdparty'
+    - 'third-party'
+    - '3rd-party'
+    - '3rdparty'
+    - 'external'
+    - 'build'
+    - 'node_modules'
+    - 'assets'
+    - 'gulp'
+    - 'grunt'
+    - 'library'
+    - '.git'
+    - 'docs'
+    - 'Legacy'
+    - 'workflows'
