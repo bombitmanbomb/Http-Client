@@ -11,7 +11,7 @@ export class HttpResponseMessage<T> {
 		this.RequestUri = $b.requestUri;
 	}
 }
-interface Response {
+export interface Response {
 	headers: { [prop: string]: string | number };
 	content: unknown;
 	method: HttpMethod;

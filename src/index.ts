@@ -1,4 +1,4 @@
-const Version = "2.1.2";
+const Version = "2.3.1";
 import { HttpMethod } from "./HttpMethod";
 import { HttpRequestMessage } from "./HttpRequestMessage";
 import { CancellationTokenSource } from "./CancellationTokenSource";
@@ -8,9 +8,9 @@ import { ProductInfoHeaderValue } from "./ProductInfoHeaderValue";
 import { HTTP_CLIENT } from "./HTTP_CLIENT";
 export { HttpMethod } from "./HttpMethod";
 export { HttpRequestMessage } from "./HttpRequestMessage";
-export { HttpResponseMessage } from "./HttpResponseMessage";
+export { HttpResponseMessage, Response } from "./HttpResponseMessage";
 export { CancellationTokenSource } from "./CancellationTokenSource";
-export { CloudResult } from "./CloudResult";
+export { CloudResult, Constructable } from "./CloudResult";
 export { ProductInfoHeaderValue } from "./ProductInfoHeaderValue";
 export { HTTP_CLIENT } from "./HTTP_CLIENT";
 
@@ -305,7 +305,7 @@ export class Http {
 	}
 }
 
-interface HttpOptions {
+export interface HttpOptions {
 	DefaultTimeout?: number | TimeSpan;
 	ENDPOINT?: string;
 	DEBUG_REQUESTS?: boolean;
