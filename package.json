@@ -1,9 +1,10 @@
 {
 	"name": "@bombitmanbomb/http-client",
-	"version": "2.3.2",
+	"version": "2.3.3",
 	"description": "",
 	"main": "lib",
 	"types": "lib",
+	"type": "module",
 	"scripts": {
 		"build": "Del lib /S /Q && npm run prepare",
 		"prepare": "tsc",
