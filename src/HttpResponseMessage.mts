@@ -1,4 +1,4 @@
-import type { HttpMethod } from "./HttpMethod";
+import type { HttpMethod } from "./HttpMethod.mjs";
 export class HttpResponseMessage<T> {
 	Headers: { [prop: string]: string | number };
 	Content: unknown;

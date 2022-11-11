@@ -1,18 +1,18 @@
 const Version = "2.3.1";
-import { HttpMethod } from "./HttpMethod";
-import { HttpRequestMessage } from "./HttpRequestMessage";
-import { CancellationTokenSource } from "./CancellationTokenSource";
+import { HttpMethod } from "./HttpMethod.mjs";
+import { HttpRequestMessage } from "./HttpRequestMessage.mjs";
+import { CancellationTokenSource } from "./CancellationTokenSource.mjs";
 import { TimeSpan } from "@bombitmanbomb/utils";
-import { CloudResult } from "./CloudResult";
-import { ProductInfoHeaderValue } from "./ProductInfoHeaderValue";
-import { HTTP_CLIENT } from "./HTTP_CLIENT";
-export { HttpMethod } from "./HttpMethod";
-export { HttpRequestMessage } from "./HttpRequestMessage";
-export { HttpResponseMessage, Response } from "./HttpResponseMessage";
-export { CancellationTokenSource } from "./CancellationTokenSource";
-export { CloudResult, Constructable } from "./CloudResult";
-export { ProductInfoHeaderValue } from "./ProductInfoHeaderValue";
-export { HTTP_CLIENT } from "./HTTP_CLIENT";
+import { CloudResult } from "./CloudResult.mjs";
+import { ProductInfoHeaderValue } from "./ProductInfoHeaderValue.mjs";
+import { HTTP_CLIENT } from "./HTTP_CLIENT.mjs";
+export { HttpMethod } from "./HttpMethod.mjs";
+export { HttpRequestMessage } from "./HttpRequestMessage.mjs";
+export { HttpResponseMessage, Response } from "./HttpResponseMessage.mjs";
+export { CancellationTokenSource } from "./CancellationTokenSource.mjs";
+export { CloudResult, Constructable } from "./CloudResult.mjs";
+export { ProductInfoHeaderValue } from "./ProductInfoHeaderValue.mjs";
+export { HTTP_CLIENT } from "./HTTP_CLIENT.mjs";
 
 export class Http {
 	public Bot: unknown;

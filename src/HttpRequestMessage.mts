@@ -1,5 +1,5 @@
 import type { HeadersInit, BodyInit } from "node-fetch";
-import type { HttpMethod } from "./HttpMethod";
+import type { HttpMethod } from "./HttpMethod.mjs";
 export class HttpRequestMessage {
 	Headers: HeadersInit;
 	Content: BodyInit | null;

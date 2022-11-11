@@ -1,8 +1,8 @@
-import { CloudResult } from "./CloudResult";
+import { CloudResult } from "./CloudResult.mjs";
 import fetch from "node-fetch";
-import type { HttpRequestMessage } from "./HttpRequestMessage";
-import type { CancellationTokenSource } from "./CancellationTokenSource";
-import { HttpMethod } from "./HttpMethod";
+import type { HttpRequestMessage } from "./HttpRequestMessage.mjs";
+import type { CancellationTokenSource } from "./CancellationTokenSource.mjs";
+import { HttpMethod } from "./HttpMethod.mjs";
 import type { Headers } from "form-data";
 export class HTTP_CLIENT {
 	constructor() {}
